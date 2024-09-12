@@ -115,9 +115,7 @@ class ConnectDisconnectAction(Action):
     def monitoring_iteration(self):
         for context, prx in CONTEXT_TO_PROXY_ITEM.items():
             proxy = get_proxy(proxy_type=prx.proxy_type, networkservice=prx.networkservice)
-            if proxy.server != prx.domain or proxy.port != prx.port:
-                continue
-            if proxy.enabled:
+            if proxy.enabled and proxy.server == prx.domain and proxy.port == prx.port:
                 self.set_state(context=context, state=ConnectStates.ENABLED)
                 continue
             self.set_state(context=context, state=ConnectStates.DISABLED)
