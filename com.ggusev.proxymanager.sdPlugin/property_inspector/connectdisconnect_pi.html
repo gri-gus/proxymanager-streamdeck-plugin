@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>com.ggusev.proxymanager.connectdisconnect Property Inspector</title>
+    <link rel="stylesheet" href="streamdeck-javascript-sdk/css/sdpi.css"/>
+</head>
+
+<body>
+<div class="sdpi-wrapper">
+
+        <div class="sdpi-item">
+        <div class="sdpi-item-label">Proxy type</div>
+        <select class="sdpi-item-value select" id="proxy_type" onchange="onchange_proxy_type()">
+            <option selected value="null"></option>
+<option value="http">http</option>
+<option value="https">https</option>
+<option value="socks">socks</option>
+        </select>
+    </div>
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Networkservice</div>
+        <input class="sdpi-item-value" id="networkservice" required type="text" onchange="onchange_networkservice()"
+               value="Wi-Fi" placeholder="Wi-Fi" >
+    </div>
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Domain</div>
+        <input class="sdpi-item-value" id="domain" required type="text" onchange="onchange_domain()"
+               value="" placeholder="192.168.61.1" >
+    </div>
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Port</div>
+        <input class="sdpi-item-value" id="port" required type="text" onchange="onchange_port()"
+               value="" placeholder="1080" pattern="\d{1,}">
+    </div>
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Username</div>
+        <input class="sdpi-item-value" id="username"  type="text" onchange="onchange_username()"
+               value="" placeholder="username" >
+    </div>
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Password</div>
+        <input class="sdpi-item-value" id="password"  type="text" onchange="onchange_password()"
+               value="" placeholder="password" >
+    </div>
+
+</div>
+
+<!-- Stream Deck Libs -->
+<script src="streamdeck-javascript-sdk/js/constants.js"></script>
+<script src="streamdeck-javascript-sdk/js/prototypes.js"></script>
+<script src="streamdeck-javascript-sdk/js/timers.js"></script>
+<script src="streamdeck-javascript-sdk/js/utils.js"></script>
+<script src="streamdeck-javascript-sdk/js/events.js"></script>
+<script src="streamdeck-javascript-sdk/js/api.js"></script>
+<script src="streamdeck-javascript-sdk/js/property-inspector.js"></script>
+<script src="streamdeck-javascript-sdk/js/dynamic-styles.js"></script>
+<script>
+    console.log('Property Inspector loaded', $PI);
+
+        const proxy_type_el = document.getElementById("proxy_type")
+    const networkservice_el = document.getElementById("networkservice")
+    const domain_el = document.getElementById("domain")
+    const port_el = document.getElementById("port")
+    const username_el = document.getElementById("username")
+    const password_el = document.getElementById("password")
+
+    let settings
+
+    $PI.onConnected(jsn => {
+        console.log('Property Inspector connected', jsn);
+        console.log(jsn.actionInfo.payload.settings);
+        settings = jsn.actionInfo.payload.settings;
+
+                if (settings["proxy_type"] !== undefined) {
+            let update_result = update_select_options(
+                proxy_type_el,
+                settings["proxy_type"][0],
+                settings["proxy_type"][1],
+            )
+            if (!update_result) {
+                let values_and_selected = get_select_values_and_selected(
+                    proxy_type_el,
+                )
+                settings["proxy_type"] = [
+                    values_and_selected.values,
+                    values_and_selected.selected,
+                ]
+            }
+        } else {
+            let values_and_selected = get_select_values_and_selected(
+                proxy_type_el,
+            )
+            settings["proxy_type"] = [
+                values_and_selected.values,
+                values_and_selected.selected,
+            ]
+        }
+        if (settings["networkservice"] !== undefined) {
+            networkservice_el.value = settings.networkservice
+        } else {
+            settings["networkservice"] = networkservice_el.value
+        }
+        if (settings["domain"] !== undefined) {
+            domain_el.value = settings.domain
+        } else {
+            settings["domain"] = domain_el.value
+        }
+        if (settings["port"] !== undefined) {
+            port_el.value = settings.port
+        } else {
+            settings["port"] = port_el.value
+        }
+        if (settings["username"] !== undefined) {
+            username_el.value = settings.username
+        } else {
+            settings["username"] = username_el.value
+        }
+        if (settings["password"] !== undefined) {
+            password_el.value = settings.password
+        } else {
+            settings["password"] = password_el.value
+        }
+
+        $PI.setSettings(settings);
+    });
+
+    $PI.onDidReceiveSettings("com.ggusev.proxymanager.connectdisconnect", jsn => {
+        settings = jsn.payload.settings
+
+                if (settings["proxy_type"] !== undefined) {
+            let update_result = update_select_options(
+                proxy_type_el,
+                settings["proxy_type"][0],
+                settings["proxy_type"][1],
+            )
+            if (!update_result) {
+                let values_and_selected = get_select_values_and_selected(
+                    proxy_type_el,
+                )
+                settings["proxy_type"] = [
+                    values_and_selected.values,
+                    values_and_selected.selected,
+                ]
+            }
+        } else {
+            let values_and_selected = get_select_values_and_selected(
+                proxy_type_el,
+            )
+            settings["proxy_type"] = [
+                values_and_selected.values,
+                values_and_selected.selected,
+            ]
+        }
+        if (settings["networkservice"] !== undefined) {
+            networkservice_el.value = settings.networkservice
+        } else {
+            settings["networkservice"] = networkservice_el.value
+        }
+        if (settings["domain"] !== undefined) {
+            domain_el.value = settings.domain
+        } else {
+            settings["domain"] = domain_el.value
+        }
+        if (settings["port"] !== undefined) {
+            port_el.value = settings.port
+        } else {
+            settings["port"] = port_el.value
+        }
+        if (settings["username"] !== undefined) {
+            username_el.value = settings.username
+        } else {
+            settings["username"] = username_el.value
+        }
+        if (settings["password"] !== undefined) {
+            password_el.value = settings.password
+        } else {
+            settings["password"] = password_el.value
+        }
+    });
+
+        const onchange_proxy_type = () => {
+        console.log(proxy_type_el.value);
+        let values_and_selected = get_select_values_and_selected(
+            proxy_type_el,
+        )
+        settings["proxy_type"] = [
+            values_and_selected.values,
+            values_and_selected.selected,
+        ]
+        $PI.setSettings(settings);
+    }
+    const onchange_networkservice = () => {
+        console.log(networkservice_el.value);
+        settings["networkservice"] = networkservice_el.value;
+        $PI.setSettings(settings);
+    }
+    const onchange_domain = () => {
+        console.log(domain_el.value);
+        settings["domain"] = domain_el.value;
+        $PI.setSettings(settings);
+    }
+    const onchange_port = () => {
+        console.log(port_el.value);
+        settings["port"] = port_el.value;
+        $PI.setSettings(settings);
+    }
+    const onchange_username = () => {
+        console.log(username_el.value);
+        settings["username"] = username_el.value;
+        $PI.setSettings(settings);
+    }
+    const onchange_password = () => {
+        console.log(password_el.value);
+        settings["password"] = password_el.value;
+        $PI.setSettings(settings);
+    }
+
+    function get_select_values_and_selected(element) {
+        let values = [];
+        for (let i = 0; i < element.options.length; i++) {
+            let option = element.options[i];
+            if (option.value === "null") {
+                continue;
+            }
+            values.push(option.value);
+        }
+        let selected
+        if (element.value === "null") {
+            selected = null
+        } else {
+            selected = element.value
+        }
+        return {
+            values: values,
+            selected: selected
+        };
+    }
+
+    function update_select_options(element, values, selected_value) {
+        element.innerHTML = '';
+
+        if (selected_value === null) {
+            selected_value = "null";
+        }
+
+        const nullOption = document.createElement('option');
+        nullOption.value = "null";
+        nullOption.text = "";
+        element.appendChild(nullOption);
+
+        values.forEach(value => {
+            if (value === null) {
+                return;
+            }
+            const option = document.createElement('option');
+            option.value = value;
+            option.text = value;
+            element.appendChild(option);
+        });
+
+        if (values.includes(selected_value)) {
+            element.value = selected_value;
+            return true
+        } else {
+            element.value = "null";
+            return false
+        }
+    }
+
+</script>
+</body>
+
+</html>

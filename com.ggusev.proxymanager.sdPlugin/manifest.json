@@ -1,0 +1,54 @@
+{
+  "Actions": [
+    {
+      "UUID": "com.ggusev.proxymanager.connectdisconnect",
+      "Icon": "assets/connectdisconnect/action_icon",
+      "Name": "On/Off Proxy",
+      "States": [
+        {
+          "Image": "assets/connectdisconnect/red",
+          "Name": "DISABLED",
+          "TitleColor": "#FFFFFF",
+          "TitleAlignment": "bottom",
+          "FontFamily": "Microsoft Sans Serif",
+          "FontSize": "13"
+        },
+        {
+          "Image": "assets/connectdisconnect/green",
+          "Name": "ENABLED",
+          "TitleColor": "#FFFFFF",
+          "TitleAlignment": "bottom",
+          "FontFamily": "Microsoft Sans Serif",
+          "FontSize": "13"
+        }
+      ],
+      "DisableAutomaticStates": true,
+      "PropertyInspectorPath": "property_inspector/connectdisconnect_pi.html",
+      "SupportedInMultiActions": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Tooltip": "Connect to proxy or disconnect.",
+      "UserTitleEnabled": true
+    }
+  ],
+  "Author": "Grigoriy Gusev",
+  "CodePath": "run.sh",
+  "Description": "Control proxy on MacOS",
+  "Icon": "assets/plugin_icon",
+  "Name": "Proxy manager",
+  "Version": "1.0.0",
+  "SDKVersion": 2,
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.14"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "6"
+  },
+  "Category": "Network",
+  "CategoryIcon": "assets/network_category_icon",
+  "CodePathMac": "run.sh"
+}
