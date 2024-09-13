@@ -50,5 +50,6 @@
   },
   "Category": "Network",
   "CategoryIcon": "assets/network_category_icon",
-  "CodePathMac": "run.sh"
+  "CodePathMac": "run.sh",
+  "URL": "https://github.com/gri-gus/proxymanager-streamdeck-plugin"
 }
