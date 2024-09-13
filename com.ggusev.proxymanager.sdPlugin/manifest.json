@@ -37,7 +37,7 @@
   "Description": "Control proxy on MacOS",
   "Icon": "assets/plugin_icon",
   "Name": "Proxy manager",
-  "Version": "1.0.1",
+  "Version": "1.0.2",
   "SDKVersion": 2,
   "OS": [
     {
