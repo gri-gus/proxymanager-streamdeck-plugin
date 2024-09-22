@@ -90,7 +90,6 @@ class ConnectDisconnectAction(Action):
             return
         self.show_alert(context=obj.context)
 
-    @log_errors
     def on_will_appear(self, obj: events_received_objs.WillAppear):
         networkservice = obj.payload.settings["networkservice"]
         proxy_types, proxy_type_selected = obj.payload.settings["proxy_type"]
@@ -109,7 +108,6 @@ class ConnectDisconnectAction(Action):
         )
         CONTEXT_TO_PROXY_SETTINGS[obj.context] = proxy_settings
 
-    @log_errors
     def on_will_disappear(self, obj: events_received_objs.WillDisappear) -> None:
         CONTEXT_TO_PROXY_SETTINGS.pop(obj.context, None)
 
@@ -133,10 +131,9 @@ class ConnectDisconnectAction(Action):
             self.set_state(context=context, state=ConnectStates.DISABLED)
 
 
-connect_disconnect_action = ConnectDisconnectAction()
-connect_disconnect_action.run_monitoring()
-
 if __name__ == '__main__':
+    connect_disconnect_action = ConnectDisconnectAction()
+    connect_disconnect_action.run_monitoring()
     StreamDeck(
         actions=[
             connect_disconnect_action,
