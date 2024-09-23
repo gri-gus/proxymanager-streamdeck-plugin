@@ -22,6 +22,7 @@ Stream Deck plugin for enabling and disabling proxies on MacOS.
 ## Features
 
 * Supports `http`, `https` and `socks` proxies.
+* There is `http(s)` proxy to manage `http` and `https` proxies at the same time.
 * The color of the button changes depending on its state.
 
 ## Installation

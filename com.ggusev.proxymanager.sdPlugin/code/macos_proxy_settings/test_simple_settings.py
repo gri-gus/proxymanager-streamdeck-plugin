@@ -18,6 +18,15 @@ class TestsSimpleSettings(TestCase):
         )
         print(res)
 
+    def test_set_proxy_http_https(self):
+        res = set_proxy(
+            proxy_type=ProxyTypes.HTTP_HTTPS,
+            networkservice="Wi-Fi",
+            domain="192.168.158.9",
+            port="1080",
+        )
+        print(res)
+
     def test_set_proxy_state_enable(self):
         res = set_proxy_state(
             proxy_type=ProxyTypes.SOCKS,
@@ -34,9 +43,30 @@ class TestsSimpleSettings(TestCase):
         )
         print(res)
 
-    def test_get_proxy(self):
+    def test_get_proxy_socks(self):
         res = get_proxy(
             proxy_type=ProxyTypes.SOCKS,
+            networkservice="Wi-Fi"
+        )
+        print(res)
+
+    def test_get_proxy_http(self):
+        res = get_proxy(
+            proxy_type=ProxyTypes.HTTP,
+            networkservice="Wi-Fi"
+        )
+        print(res)
+
+    def test_get_proxy_https(self):
+        res = get_proxy(
+            proxy_type=ProxyTypes.HTTPS,
+            networkservice="Wi-Fi"
+        )
+        print(res)
+
+    def test_get_proxy_http_https(self):
+        res = get_proxy(
+            proxy_type=ProxyTypes.HTTP_HTTPS,
             networkservice="Wi-Fi"
         )
         print(res)

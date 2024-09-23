@@ -13,7 +13,7 @@ def main():
             Select(
                 uid="proxy_type",
                 label="Proxy type",
-                values=["http", "https", "socks", ],
+                values=["http", "https", "http(s)", "socks", ],
                 default_value=None,
             ),
             Textfield(
