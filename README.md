@@ -80,6 +80,9 @@ Download the Stream Deck app from the official website and install it: https://w
 
 Latest release: https://github.com/gri-gus/proxymanager-streamdeck-plugin/releases
 
+Property Inspector
+preview: [click](https://htmlpreview.github.io/?https://github.com/gri-gus/proxymanager-streamdeck-plugin/blob/main/com.ggusev.proxymanager.sdPlugin/property_inspector/connectdisconnect_pi.html)
+
 You need to download a file called `com.ggusev.proxymanager.streamDeckPlugin`. Once downloaded, double-click on it. The
 Stream Deck application prompts you to install the plugin.
 
