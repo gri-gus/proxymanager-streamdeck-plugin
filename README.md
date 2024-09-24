@@ -9,6 +9,9 @@
 
 Stream Deck plugin for enabling and disabling proxies on MacOS.
 
+**Property Inspector
+preview:** [click](https://htmlpreview.github.io/?https://github.com/gri-gus/proxymanager-streamdeck-plugin/blob/main/com.ggusev.proxymanager.sdPlugin/property_inspector/connectdisconnect_pi.html)
+
 ## Requirements
 
 **Operating systems:**
@@ -24,9 +27,6 @@ Stream Deck plugin for enabling and disabling proxies on MacOS.
 * Supports `http`, `https` and `socks` proxies.
 * There is `http(s)` proxy to manage `http` and `https` proxies at the same time.
 * The color of the button changes depending on its state.
-
-Property Inspector
-preview: [click](https://htmlpreview.github.io/?https://github.com/gri-gus/proxymanager-streamdeck-plugin/blob/main/com.ggusev.proxymanager.sdPlugin/property_inspector/connectdisconnect_pi.html)
 
 ## Installation
 
